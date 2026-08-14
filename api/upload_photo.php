@@ -1,0 +1,20 @@
+<?php
+require_once '../includes/config.php';
+require_once '../includes/db.php';
+require_once '../includes/functions.php';
+if($_SERVER['REQUEST_METHOD']!=='POST') die;
+if($_POST['csrf_token']!==$_SESSION['csrf_token']) die('CSRF');
+$riderId = $_SESSION['user_id'];
+$parcelId = intval($_POST['parcel_id']);
+$pdo = Database::getInstance();
+$parcel = $pdo->prepare("SELECT id FROM parcels WHERE id=? AND assigned_rider=?")->execute([$parcelId,$riderId])->fetch();
+if(!$parcel) die('Unauthorized');
+$file = $_FILES['photo'];
+$ext = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
+if(!in_array($ext, ALLOWED_EXTENSIONS)) die('Invalid file');
+if($file['size'] > MAX_UPLOAD_SIZE) die('Too large');
+$filename = uniqid('proof_').'.'.$ext;
+move_uploaded_file($file['tmp_name'], UPLOAD_DIR . $filename);
+$path = 'uploads/photos/'.$filename;
+$pdo->prepare("INSERT INTO delivery_photos (parcel_id, rider_id, photo_path) VALUES (?,?,?)")->execute([$parcelId,$riderId,$path]);
+echo json_encode(['success'=>true,'path'=>$path]);

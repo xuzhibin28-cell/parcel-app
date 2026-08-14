@@ -1,0 +1,46 @@
+/* 重置 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; background: #f4f7fc; color: #333; }
+
+/* 布局 */
+.sidebar { width: 250px; position: fixed; left: 0; top: 0; bottom: 0; background: #2c3e50; color: white; padding: 1rem; }
+.sidebar h2 { margin-bottom: 2rem; }
+.sidebar a { color: white; text-decoration: none; display: block; padding: 0.5rem 0; }
+.main { margin-left: 250px; padding: 2rem; }
+
+/* 卡片 */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.card h3 { font-size: 0.9rem; color: #666; }
+.card p { font-size: 2rem; font-weight: bold; }
+
+/* 表格 */
+.data-table { width: 100%; background: white; border-collapse: collapse; margin: 1rem 0; }
+.data-table th { background: #2c3e50; color: white; padding: 0.8rem; text-align: left; }
+.data-table td { padding: 0.8rem; border-bottom: 1px solid #eee; }
+
+/* 按钮 */
+.btn { padding: 0.6rem 1.2rem; border: none; border-radius: 4px; cursor: pointer; }
+.btn-primary { background: #3498db; color: white; }
+.btn-success { background: #27ae60; color: white; }
+.btn-danger { background: #e74c3c; color: white; }
+
+/* 状态标签 */
+.badge { padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.8rem; }
+.badge-online { background: #27ae60; color: white; }
+.badge-offline { background: #95a5a6; color: white; }
+
+/* 表单 */
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.3rem; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; }
+
+/* 登录页 */
+.login-page { display: flex; justify-content: center; align-items: center; height: 100vh; background: #2c3e50; }
+.login-container { background: white; padding: 2rem; border-radius: 8px; width: 100%; max-width: 400px; }
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .sidebar { width: 100%; position: relative; height: auto; }
+    .main { margin-left: 0; }
+}
