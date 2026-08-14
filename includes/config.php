@@ -6,9 +6,9 @@ define('MAX_UPLOAD_SIZE', 5 * 1024 * 1024); // 5MB
 define('ALLOWED_EXTENSIONS', ['jpg', 'jpeg', 'png']);
 
 // Database credentials
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'parcel_system');
-define('DB_USER', 'synergy1_yenping');
+define('DB_HOST', 'synergy1_bin_parcel');
+define('DB_NAME', 'synergy1_yenping');
+define('DB_USER', 'root');
 define('DB_PASS', 'R.zb0ZwEuGZ}*fW2');
 
 // Start session if not already started
